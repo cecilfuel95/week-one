@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>CIM 540 - Eric Kevin Cecil - Assgmt 1 </title>
+	<style>
+		
+		.circle-red, .circle-green, .circle-blue{
+			width: 200px;
+			height: 200px;
+			border-radius: 100px;
+			transition: background-color 3s;
+		}
+		
+		.circle-red {
+			background-color: red;
+		}.circle-green {
+			background-color: green;
+		}.circle-blue {
+			background-color: blue;
+		}
+		
+		.circle-red:hover{
+			background-color: cyan;	
+		}.circle-green:hover{
+			background-color: magenta;	
+		}.circle-blue:hover{
+			background-color: yellow;	
+		}
+	
+	</style>
+</head>
+
+<body>
+	<div class="circle-red"></div>
+	<div class="circle-blue"></div>
+	<div class="circle-green"></div>
+</body>
+
+</html>
