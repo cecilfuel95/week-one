@@ -1,0 +1,66 @@
+var center = 250;
+var outwardBound = center/2.5;
+var inwardBound = 2*center - outwardBound;
+var homewardBound = "The Incredible Journey";
+var hereHoldMyColors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
+var contador = 0;
+var brushSize = center/10;
+var colour = "black";
+
+function setup() {
+ createCanvas(2*center,2*center);
+ noStroke();
+ fill("cyan");
+ rect(0,0,outwardBound,outwardBound);
+ fill("red");
+ rect(inwardBound,0,outwardBound,outwardBound);
+ fill("yellow");
+ rect(inwardBound,inwardBound,outwardBound,outwardBound);
+ fill("black");
+ rect(0, inwardBound,outwardBound,outwardBound);
+ stroke("black");
+}
+
+function draw() {
+  
+  ellipse(mouseX, mouseY, brushSize, brushSize);
+  
+  
+  if(mouseX>=0 && mouseX <=outwardBound) {
+    if(mouseY>=0 && mouseY <= outwardBound) {
+      fill("white");
+      noStroke();
+      rect(outwardBound, 0, inwardBound-outwardBound, 2*center);
+      rect(0, outwardBound,2*center, inwardBound-outwardBound);
+      stroke("black");
+    }
+    else if(mouseY>=inwardBound && mouseY<=(2*center)){
+      contador = count(contador);
+      var colour = hereHoldMyColors[contador];
+      fill(colour);
+      //console.log(colour);
+    }
+  }
+  else if(mouseX>=inwardBound && mouseX<=(2*center)) {
+    if(mouseY>=0 && mouseY<=outwardBound) {
+      //console.log("red");
+      brushSize = brushSize*1.01;
+    }
+    else if(mouseY>=inwardBound && mouseY<=(2*center)) {
+      //console.log("yellow");
+      brushSize = brushSize/1.01;
+    }
+  }
+}
+
+function count(contador) {
+    if(contador == hereHoldMyColors.length-1) {
+      contador = 0;
+      //console.log("cuenta! cuenta!");
+    }
+    else {
+      contador++;
+      //console.log("no cuentes! no cuentes!: " + contador);
+    }
+    return(contador);
+  }
