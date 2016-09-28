@@ -1,0 +1,89 @@
+var unit = 100;
+var candids = 6;
+var mainQ = "Who will win the elections?" 
++ " To vote for a candidate, press the number by their name.";
+
+var candidates = {
+  "Hillary Clinton": 0,
+  "Donald Trump": 0,
+  "Gary Johnson": 0,
+  "Jill Stein": 0,
+  "Deez Nuts": 0,
+  "Abb Stain": 0
+};
+
+var partyColors = ["blue", "red", "gray", "green", "purple", "orange"];
+
+var voteTotal = 0;
+var partyFill = "puce";
+
+function setup() {
+  createCanvas(candids*unit, candids*unit);
+  noStroke();
+}
+
+function draw(){
+ background("white");
+ fill("black");
+ textAlign(CENTER);
+ text(mainQ, 0, 100, width, 100);
+ 
+ var voteCount = 0;
+ voteTotal = 0;
+
+for (var keys in candidates) {
+
+    fill("black");
+    textAlign(CENTER);
+    text(keys + ": ", voteCount * unit, height / 2, unit, unit);
+    text(voteCount + 1, voteCount * unit + 45, height / 2, unit, unit);
+    text("Votes: " + candidates[keys], voteCount * unit, height / 2 + 40, unit, unit);
+
+    voteCount++;
+
+    voteTotal += candidates[keys];
+
+  }
+
+  voteCount = 0;
+  for (keys in candidates) {
+    var offset = map(candidates[keys], 0, voteTotal, 0, height);
+    fill(partyColors[voteCount]);
+    rect((voteCount * 100) + 20, height - offset, 50, height);
+    voteCount++;
+  }
+  
+  fill(0);
+  var totalMessage = "Total Votes: " + voteTotal;
+  text(totalMessage, 60, height - 10);
+
+}
+
+
+function keyPressed() {
+ 
+  if (keyCode == 49) {
+    candidates["Hillary Clinton"]++;
+    partyFill = "blue";
+  }
+  else if (keyCode == 50) {
+    candidates["Donald Trump"]++;
+    partyFill = "red";
+  }
+  else if (keyCode == 51) {
+    candidates["Gary Johnson"]++;
+    partyFill = "grey";
+  }
+  else if (keyCode == 52) {
+    candidates["Jill Stein"]++;
+    partyFill = "green";
+  }
+  else if (keyCode == 53) {
+    candidates["Deez Nuts"]++;
+    partyFill = "purple";
+  }
+  else if (keyCode == 54) {
+    candidates["Abb Stain"]++;
+    partyFill = "orange";
+  }
+}
